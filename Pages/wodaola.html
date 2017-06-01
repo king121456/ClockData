@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta name="Description" content="最好用的企业全员微信考勤管理神器，企业的的首选，员工的最爱。">
+<link rel="stylesheet" type="text/css" href="a.css"/>
+<link rel="stylesheet" type="text/css" href="b.css" />
+<title>我到啦</title>
+<style type="text/css">
+	#firstMask,
+	#selfieMask
+	{ width:100%; height:100%; overflow-y:hidden; background-color:rgba(1,20,42,0.3); margin:0 auto; position:fixed; top:0;left:0; z-index:500} .whiteFirst {width:76%; border-radius:8px; background:#fff; margin-left:12%} .imgBox {width:100%} .imgBox img{width:100%;height:auto;display:block;border-top-left-radius:8px;border-top-right-radius:8px}.textBox{width:100%;overflow:hidden}.infoBox{height:80%;width:100%;padding:4%;text-align:center}.infoBox h4{text-align:center;color:#262626;padding:20px 0 16px 0}.infoBox ul{display:block;width:100%;margin;0 auto;margin-bottom:8px}.infoBox ul li{color:#909090;text-align:left;list-style:disc}.btnBox{width:100%;height:20%;overflow:hidden;border-top:1px solid#ddd}.iKnow,.selfiemore{width:50%;float:left;text-align:center;text-decoration:none}.iKnow{border-right:1px solid#ddd;color:#262626}@media only screen and(min-width:320px)and(max-width:480px){.infoBox h4{font-size:.9em}.infoBox ul li{font-size:.6em;padding:.1em}.btnBox{padding:10px}.iKnow,.more,.selfiemore{font-size:.8em}.infoBox ul{padding:10px 0}}@media only screen and(min-width:320px)and(max-width:568px){.infoBox h4{font-size:.9em}.infoBox ul li{font-size:.8em;padding:.1em}.btnBox{padding:15px}.iKnow,.more,.selfiemore{font-size:.9em}.infoBox ul{padding:10px 0px 5px 10px;margin-left:8%}}@media only screen and(min-width:375px)and(max-width:667px){.infoBox h4{font-size:1.1em}.infoBox ul li{font-size:.9em;padding:.1em}.btnBox{padding:16px}.iKnow,.more,.selfiemore{font-size:1.1em}.infoBox ul{padding:10px 0px 10px 15px}}@media only screen and(min-width:414px)and(max-width:736px){.infoBox h4{font-size:1.2em}.infoBox ul li{font-size:.9em;padding:.2em}.btnBox{padding:16px}.iKnow,.more,.selfiemore{font-size:1.1em}.infoBox ul{padding:10px 0px 10px 20px}}</style>
+<link rel="stylesheet" href="csshide1.css"/>
+<style></style >
+<link rel="stylesheet" href="/abprule.css"/>
+<style></style  >
+<style></style>
+<script type="text/javascript">window.onerror=function(){return true;}</script></head>
+<body>
+	
+	<div class="companyRcodeshow" style="display:none">
+		<header class="litInterval">
+			<img class="companyIcon litInterval" src="../img/icon_department.png" alt="公司创建成功！" />
+			<p class="titleSize  titleColor titlelineHeight weight">邀请同事加入公司</p>
+			<p class="textSize textColor textlineHeight">您已成功创建公司，现在就邀请同事加入吧！<br />他们可以通过公司邀请码，加入您的公司。</p>
+		</header>
+		<div class="companyRcode">
+			<div>
+				<span class="copyCode">
+					<p class="rcodeTipSize littleTipColor">您的公司邀请码</p>
+					<div class="titleSize orgCode weight"></div>
+				</span>
+			</div>
+		</div>
+		<div class="wodaolaRcode">	
+			<section>
+				<img class="rCodeImg litInterval" src="../img/QRcode.jpg" alt="wodaolaRcode" />
+				<div class="textlineHeight rCodeText textSize textColor">将此二维码发给您的同事，<br />邀请他们关注我到啦。</div>
+			</section>
+		</div>
+		<button class="closePage textSize">我知道了</button>
+	</div>
+	
+	<!--载入地址时的遮罩层-->
+	<div class="addressMask"></div>
+	
+	<!--载入地址时的弹窗-->
+	<div class="addressDialog">
+		<div class="addressDialogPic"></div>
+		<p>正在读取地址...</p>
+	</div>
+	
+	<!--打卡成功提示-->
+	<div class="MaskSuccess"></div>
+	
+	<footer class="mui-bar mui-bar-tab" style="padding:0;">
+		<a class="mui-tab-item check mui-active" href="#">
+			<div class="mui-icon icon-check"></div>
+			<div class="mui-tab-labe">签到</div>
+		</a> <a class="mui-tab-item discover" href="#">
+			<div class="mui-icon icon-discover"></div>
+			<div class="mui-tab-labe">发现</div>
+		</a> <a class="mui-tab-item mine" href="#">
+			<div class="mui-icon icon-mine"></div>
+			<div class="mui-tab-labe">我的</div>
+		</a>
+	</footer>
+	<article class="bg_sky"></article>
+	<div class="mui-content">
+		<!--主体部分-->
+		<!--用来隐藏主体的标签-->
+		<div class="checkMain">
+			<div class="header_date">
+				<div class="header_date_div header_date_left">
+					<!--星期-->
+					<div class="header_date_week"></div>
+					<div class="header_date_date">
+						<!--时间-->
+						<p class="header_date_time"></p>
+						<!--签到日-->
+						<span class="header_date_text"></span>
+					</div>
+				</div>
+				<div class="header_date_div header_date_right">
+					<!--天气-->
+					<img class="weatherIcon" /><span class="condition"></span>
+					<p class="bottomInfo"><span class="temperature"></span><span class="place"></span><img class="weatheraAddressIcon" style="display:none;" /></p>
+				</div>
+			</div>
+			<div class="message">
+				<div class="message_div message_left">
+					<div class="message_left_title"></div>
+					<div class="message_left_tip"></div>
+				</div>
+				<!--打卡时间显示-->
+				<div class="message_div message_right" style="overflow: hidden">
+					<p>
+						<span class="markText">上班</span>
+						<strong class="message_on"></strong>
+						<span class="completeState workOnState"></span>
+					</p>
+					<p>
+						<span class="markText">下班</span>
+						<strong class="message_out"></strong>
+						<span class="completeState workOutState"></span>
+					</p>
+				</div>
+			</div>
+			<div class="foot_btn_group">
+				<!--添加刷新按钮-->
+				<div class="btnReload">
+					<p>刷新</p>
+				</div>
+				<div class="foot_btn foot_btn_left">
+					<p><span>我到啦</span></p>
+				</div>
+				<div class="foot_btn foot_btn_middle"></div>
+				<div class="foot_btn foot_btn_right">
+					<p><span>我走啦</span></p>
+				</div>
+			</div>
+			<div class="content_create">
+				<div class="help_left_create helpCreate">
+					<div class="help_left_create_circle"></div>
+					<div class="help_left_create_line"></div>
+					<div class="help_left_create_content">没有邀请的<br/>点这里</div>
+				</div>
+				<div class="content_create_btn content_create_btn_left">	
+					<p><span>创建考勤</span></p>
+				</div>
+				<div class="help_right_create helpCreate">
+					<div class="help_right_create_circle"></div>
+					<div class="help_right_create_line"></div>
+					<div class="help_right_create_content">通过微信邀请进入的点这里</div>
+				</div>
+				<div class="content_create_btn_middle"></div>
+				<div class="content_create_btn content_create_btn_right">
+					<p><span>加入公司</span></p>
+				</div>
+			</div>
+			<div class="content_refrash">刷&nbsp;&nbsp;&nbsp;&nbsp;新</div>
+			<div class="content_nocheck">管理员未配置考勤</div>
+		</div>
+		<div class="getPraise">
+	     <div>
+				<a href="received_praise.html" style="color:#FFF;"><span id="tips_container"></span></a>
+			</div>
+		</div>
+	</div>
+	<!--位置不在规定区域时，弹出的遮罩层-->
+	<div id="screenMask" >
+		<div id="topIcon" class="block"><img src="../img/SignOutside_question.png"/></div>	
+		<div class="tipText">
+			<p class="text">你的“<i></i>位置”在<span class="text_text">签到</span>范围外，</p>
+			<p>请选择</p>
+		</div>
+		<div class="taps">
+			<div><i class="oImg" id="outOffice" ></i></div>
+			<div class="tapsLeave"><i class="lImg" id="leave" ></i></div>
+			<div><i class="bImg" id="business" ></i></div>
+			<div><i class="cImged" id="cancelKeyed" ></i></div>
+			<div><i class="cImg" id="cancelKey" ></i></div>
+		</div>
+	</div>
+	<div class="checkSuccessDrop">
+		<b>签到成功！</b>
+	</div>
+	<!--分享页面-->
+	<div class="share_page">
+		<div id="share_Mask">
+			<div class="share_white">
+				<i class="share_white_cartoonBg"></i>
+				<h3 class="share_title">签到成功</h3>
+				<p class="share_ranking">你今天是第<strong style="color:red;font-family: '微软雅黑',arial;"></strong>个签到的哦！</p>
+				<p class="share_workTime">你今天工作了<strong style="color:red;font-family: '微软雅黑',arial;"></strong>个小时哦！</p>
+				<p class="share_register_time"><s class="share_nav" style="font-family: '微软雅黑',arial;">签到时间</s> : <span style="color:blue"></span></p>
+				<span class="share_sentence"></span>
+				<div class="share_btn">
+					<div class="share_btn_pyq">分享“我到啦”</div>
+					<div class="share_btn_iknow">我知道了</div>
+				</div>
+			</div>
+			<div class="share_to"></div>
+		</div>
+	</div>
+	<script>
+	var monthEnum = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12};
+	var weekEnum = {"Mon":"星期一","Tue":"星期二","Wed":"星期三","Thu":"星期四","Fri":"星期五","Sat":"星期六","Sun":"星期日"};
+	
+	function QClass(className){
+		return document.getElementsByClassName(className)[0];
+	}
+	function QSelector(className){
+		return document.querySelector(className);
+	}
+	
+	var initAttnDate = function(dateTime){
+		//时间戳转日期对象
+		var times = new Date;
+		times.setTime(dateTime);
+		//解析日期
+		var _point = times.toString().split(" ");
+		var _week = _point[0];
+		var _month = _point[1];
+		var _date = _point[2];
+		var _year = _point[3];
+		var _time = _point[4];
+		var _timePoint = _time.split(":")[0];
+		//初始化日期
+		_month = eval("monthEnum."+_point[1]);
+		QClass("header_date_week").innerHTML = eval("weekEnum."+_week);
+		QClass("header_date_date").innerHTML = "<p class='header_date_time'>"+_year+"年"+_month+"月"+_date+"日</p><img class='signDayIcon'/><span class='header_date_text'></span>";
+		//词库
+		var wisdomArr = [
+	                    "天上掉不下馅饼，时间捎不来战果，撸起袖子加油干，把满满的劲头使出来，才能不辜负这一历史际遇。——习近平",
+						"小康不小康，关键在老乡。——习近平",
+						"中国是世界上最大的发展中国家，一直是世界减贫事业的积极倡导者和有力推动者。——习近平",
+						"改革开放30多年来，中国人民积极探索、顽强奋斗，走出了一条中国特色减贫道路。——习近平",
+						"要看真贫、扶真贫、真扶贫。——习近平",
+						"扶贫开发要增强紧迫感，真抓实干，不能光喊口号，决不能让困难地区和困难群众掉队。——习近平",
+						"牢固树立政治意识、大局意识、核心意识、看齐意识，坚定不移抓好各项重大改革举措。——习近平",
+						"面向未来，面对挑战，全党同志一定要不忘初心、继续前进。——习近平",
+						"文化自信，是更基础、更广泛、更深厚的自信。——习近平",
+						"大家撸起袖子加油干，我们就一定能够走好我们这一代人的长征路。——习近平",
+						"贫困之冰，非一日之寒；破冰之功，非一春之暖。—习近平",
+						"脱贫不要脱离实际随意提前，所有扶贫地区的领导干部都要坚守岗位。—习近平",
+						"扶贫开发贵在精准，重在精准，成败之举在于精准，需要下一番“绣花”功夫。—习近平",
+						"脱贫攻坚一定要扎扎实实，我们的时间表就是到2020年实现全面建成小康社会，还有几年时间，不要脱离实际随意提前，这样的提前就容易掺水。—习近平",
+						
+						"天上掉不下馅饼，时间捎不来战果，撸起袖子加油干，把满满的劲头使出来，才能不辜负这一历史际遇。——习近平",
+						"小康不小康，关键在老乡。——习近平",
+						"中国是世界上最大的发展中国家，一直是世界减贫事业的积极倡导者和有力推动者。——习近平",
+						"改革开放30多年来，中国人民积极探索、顽强奋斗，走出了一条中国特色减贫道路。——习近平",
+						"要看真贫、扶真贫、真扶贫。——习近平",
+						"扶贫开发要增强紧迫感，真抓实干，不能光喊口号，决不能让困难地区和困难群众掉队。——习近平",
+						"牢固树立政治意识、大局意识、核心意识、看齐意识，坚定不移抓好各项重大改革举措。——习近平",
+						"面向未来，面对挑战，全党同志一定要不忘初心、继续前进。——习近平",
+						"文化自信，是更基础、更广泛、更深厚的自信。——习近平",
+						"大家撸起袖子加油干，我们就一定能够走好我们这一代人的长征路。——习近平",
+						"贫困之冰，非一日之寒；破冰之功，非一春之暖。—习近平",
+						"脱贫不要脱离实际随意提前，所有扶贫地区的领导干部都要坚守岗位。—习近平",
+						"扶贫开发贵在精准，重在精准，成败之举在于精准，需要下一番“绣花”功夫。—习近平",
+						"脱贫攻坚一定要扎扎实实，我们的时间表就是到2020年实现全面建成小康社会，还有几年时间，不要脱离实际随意提前，这样的提前就容易掺水。—习近平",
+		                 
+		                 "夫志当存高远。——诸葛亮","志向和热爱是伟大行为的双翼。——歌德","古之立大事者，不惟有超世之才，亦必有坚忍不拔之志。——苏轼","雄心壮志是茫茫黑夜中的北斗星。——勃朗宁","真正的才智是刚毅的志向。——拿破仑","贫而懒惰乃真穷，贱而无志乃真贱。——罗丹","人若有志，万事可为。——斯迈尔斯","让自己的内心藏着一条巨龙，既是一种苦刑，也是一种乐趣。——雨果","目标越接近，困难越增加。——歌德","立志是读书人最要紧的一件事。——孙中山","伟大的人物都走过了荒沙大漠，才登上光荣的高峰。——巴尔扎克","浪费时间是所有支出中最奢侈及最昂贵的。——富兰克林","人生太短，要干的事太多，我要争分夺秒。——爱迪生","对时间的慷慨，就等于慢性自杀。——奥斯特洛夫斯基","莫等闲，白了少年头，空悲切。——岳飞","谁虚度年华，青春就要裉色，生命就会抛弃他们。——雨果","所虑时光疾，常怀紧迫情，蹒跚行步慢，落后最宜鞭。——董必武","多少事，从来急；天地转，光阴迫。一万年太久，只争朝夕。——毛泽东","世界抛弃了我，可还有篮球陪着我——科比","现在他们确实比我强，但我相信在不久的将来会打败他们——姚明","我把每一场比赛都当作我最后的一场比赛来打——艾弗森","我可以接受失败，但无法接受放弃——乔丹","我从不惧怕任何对手，只怕对手不够强大-乔丹","我们必须检讨自己，我们必须改进。——托雷斯","艰难的时刻总会过去,只要你能坚持下来。——贝克汉姆","人生的经验里都会经过一个失败的教训，也会经过成功的快乐。——吴宇森","我绝不会说我是天下第一，可是我也绝不会承认我是第二。——李小龙","做人要诚恳，认真，努力，少抱怨。——成龙","你想用卖糖水来度过余生，还是想要一个机会来改变世界？——乔布斯","最可怕的敌人，就是没有坚强的信念。——比尔·盖茨","坚持下去，成功就在下一个街角处等着你。——比尔·盖茨","当你成功的时候，你说的所有话都是真理。——马云","如果早起的那只鸟没有吃到虫子，那就会被别的鸟吃掉。——马云","别人是求学问，我是抢学问。——李嘉诚","我从来不曾有过自我怀疑。我从来不曾灰心过。——巴菲特","我们应集中关注将要发生什么，而不是什么时候发生。——巴菲特","优美的姿态，来源于与知识同行而不是独行。——奥黛丽·赫本","世界是一面镜子，你笑它便笑。——卓别林","有理想的人，生活总是火热的。 ——斯大林","平日多流汗 , 战时少流血。——埃尔温·隆美尔"]
+		var wisdomLength = wisdomArr.length;
+		var num = parseInt(Math.random()*(wisdomLength-1));
+		QClass("message_left_tip").innerHTML = wisdomArr[num];
+		if( _timePoint >=6 && _timePoint<12 ){
+			QClass("message_left_title").innerHTML = "早上好 ^.^";
+			setStyle("city1","bg1","login_history2","login_check2","login_workin1","login_workout1","#0e5162","#fff","#fdec94");
+			QClass('bg_sky').style.background = "url(../img/morning.jpg) no-repeat";
+			QClass('bg_sky').style.backgroundSize = "cover";
+		}else if(  _timePoint >=12 && _timePoint <18  ){
+			QClass("message_left_title").innerHTML = "下午好 ^.^";
+			setStyle("city2","bg2","login_history2","login_check2","login_workin1","login_workout1","#fff","#fff","#73b5ff");
+			QClass('bg_sky').style.background = "url(../img/afternoon.jpg) no-repeat";
+			QClass('bg_sky').style.backgroundSize = "cover";
+		}else{
+			QClass("message_left_title").innerHTML = "晚上好 ^.^";
+			setStyle("city3","bg3","login_history3","login_check3","login_workin2","login_workout2","#f3eff0","#f3eff0","#f3eff0");
+			QClass('bg_sky').style.background = "url(../img/evening.jpg) no-repeat";
+			QClass('bg_sky').style.backgroundSize = "cover";
+		}
+		return times;
+	};
+	initAttnDate(new Date());
+	
+	function setStyle(cityPicURL,bgURL,historyURL,checkURL,workinURL,workoutURL,week_color,date_color,text_color){
+		QClass('share_white').style.width = "86%";
+		color_span = date_color;
+		QSelector(".message_right").style.color = date_color;
+		QClass("header_date_right").style.color = week_color;
+		QSelector(".foot_btn_right span").style.color = date_color;
+		QSelector(".content_create_btn_left p").style.color = date_color;
+		QSelector(".content_create_btn_right p").style.color = date_color;
+		QClass("content_create_btn_middle").style.backgroundColor = date_color;
+		QClass("content_create_btn_middle").style.color = week_color;
+//		左上角星期,日期和签到日提醒部分
+		QClass("header_date_week").style.color = week_color;
+		QClass("header_date_time").style.color = week_color;
+		QClass("header_date_text").style.color = week_color;
+//		左下角心灵鸡汤部分
+		QClass("message_left_title").style.color = text_color;
+		QClass("message_left_tip").style.color = date_color;
+		
+		QClass("content_refrash").style.color = date_color;
+		QClass("content_refrash").style.border = "2px solid "+date_color;
+		QClass("foot_btn_group").style.border = "2px solid "+date_color;
+		QSelector(".foot_btn span").style.color = date_color;
+		QClass("content_create").style.border = "2px solid "+date_color;
+		QSelector(".content_create span").style.color = date_color;
+		QClass("content_nocheck").style.color = date_color;
+		QClass("foot_btn_middle").style.backgroundColor = date_color;
+	}
+	</script>
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js?v=1476416004939" ></script>
+	<script type="text/javascript" src="../js/jquery-weui.empty.js"></script>
+	<script type="text/javascript" src="../js/global-variable.js"></script>
+	<script type="text/javascript" src="../js/public.min.js"></script>
+	<script>
+		/*九月回归页相关JS开始*/
+		$(".nowStart").bind("click",function(){
+			$(".september").animate({"opacity":"0"},"normal",function(){
+				$(".september").css("display","none");
+			});
+			
+		});
+		/*九月回归页相关JS结束*/
+		//入口判断云之家or微信
+		$(function (){
+			//平台判断
+			if(wdl.utils.service.isEnterpriseWechat() || wdl.utils.service.isKingdee()){
+			}else{
+				//wechat端
+				if( !localStorage.getItem("login_first") ){
+					$(".helpCreate").fadeIn(800);
+					localStorage.setItem("login_first","1");
+					$("body").bind("touchstart",function (){
+						$(".helpCreate").css("display","none");
+					});
+				}else{
+					$(".helpCreate").css("display","none");
+				};
+			};
+		});
+		
+		function popTop(){
+			$("#firstMask").fadeIn();
+			var fmh = $("#firstMask")[0].clientHeight;
+			var wfh = $(".whiteFirst")[0].clientHeight;
+			$(".whiteFirst").css({
+				"margin-top":(fmh-wfh)/2+'px'
+			});
+			$(".iKnow").bind("click",function(){
+				$("#firstMask").css("display","none");
+			});
+		};
+		
+		//事件绑定
+		$(".mine").bind("touchend",function (event){
+			event.preventDefault();
+			seeyon.ajaxLink("mine_page.html");
+		});
+		$(".discover").bind("touchend",function (event){
+			event.preventDefault();
+			seeyon.ajaxLink("pageRanking.html");
+		});
+	</script>
+	<script type="text/javascript" src="../js/view/index.js?v=1476416004941"></script>
+	
+
+</body>
+</html>

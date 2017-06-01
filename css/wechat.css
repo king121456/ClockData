@@ -1,0 +1,43 @@
+*{
+	margin:0;
+	padding: 0;
+	border: 0;
+}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	background:url(../img/morning.jpg) no-repeat;
+}
+#container{
+	height:100%;
+	width: 100%;
+}
+
+#saying{
+	
+}
+#head{
+	padding-top: 142px;
+	padding-left: 93px;
+}
+#week-now{
+	font-size:80px;;
+	font-family: "微软雅黑";
+	color:#0f5161;
+}
+
+#date-now{
+	font-size: 35px;
+	color: #0f5161;
+}
+
+#saying-greeting{
+	font-size:35px;
+	color:yellow;
+}
+
+#footer{
+	padding-top: 400px;
+	padding-left: 93px;
+}
